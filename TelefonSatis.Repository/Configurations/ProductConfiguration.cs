@@ -28,6 +28,7 @@ namespace TelefonSatis.Repository.Configurations
             builder.HasMany(k => k.Comments).WithOne(k => k.Products).HasForeignKey(k => k.ProductId);
 
             builder.HasOne(k => k.Users).WithMany(k => k.Products).HasForeignKey(k => k.UserId);
+            //bu yorum deneme amaçlı yapıldı
 
 
         }

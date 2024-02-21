@@ -20,6 +20,7 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         
         public DateTime CreateDate { get; set; }
         public List< Products> Products { get; set; }
+        //Örnek
 
 
 
