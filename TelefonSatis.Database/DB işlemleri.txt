@@ -1,0 +1,10 @@
+﻿
+Entity Framework ile ORM yapısı
+ORM=> Object Relation Management-Nesne ilişki yönetimi=> Proje ile DB arasında bağlantı, data alışverişi için kullanılan bir teknoloji yapısıdır.
+=>1 Ado.Net bir ORM aracıdır
+=>2 Model ORM aracıdır
+=>3 Code First ORM aracıdır
+=> Bazı firmalar kendi ORM framworklerini geliştirir.
+
+1-Model ile db işlemleri=> Hazır Db ye erişip kullanılır
+2- Code First ile db işlemleri=> DB manuel kod ile oluşturulur ve bütün işlemler Code first ile devam edilir
