@@ -10,7 +10,7 @@ using TelefonSatis.Database.TelefonSatisDatabase;
 
 namespace TelefonSatis.Repository.Configurations
 {
-    public class CategoriesConfigurations : IEntityTypeConfiguration<Categories>
+    public class CategoriyConfiguration : IEntityTypeConfiguration<Categories>
     {
         public void Configure(EntityTypeBuilder<Categories> builder)
         {

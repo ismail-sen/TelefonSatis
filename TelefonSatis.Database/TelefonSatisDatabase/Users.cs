@@ -17,12 +17,12 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public string Address { get; set; }
         public string Email { get; set; }
         public int RuleId { get; set; }
-        
         public DateTime CreateDate { get; set; }
+        public Rules Rules { get; set; }    
         public List< Products> Products { get; set; }
+        public List<Comments> Comments { get; set; }
         //Örnek
-
-
+        
 
     }
-}
+} 

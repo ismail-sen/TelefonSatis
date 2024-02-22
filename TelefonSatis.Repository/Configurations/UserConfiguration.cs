@@ -9,7 +9,7 @@ using TelefonSatis.Database.TelefonSatisDatabase;
 
 namespace TelefonSatis.Repository.Configurations
 {
-    public class UsersConfigurations : IEntityTypeConfiguration<Users>
+    public class UserConfiguration : IEntityTypeConfiguration<Users>
     {
         public void Configure(EntityTypeBuilder<Users> builder)
         {
@@ -21,7 +21,9 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(x=>x.Email).IsRequired(true).HasMaxLength(250);
             builder.Property(x => x.RuleId);
 
-           // builder.HasMany(x=>x.Products).WithOne(x=>x.Users).HasForeignKey(x=>x.UserId);  
+            builder.HasOne(x => x.Rules).WithMany(x => x.Users).HasForeignKey(x => x.RuleId);
+
+            // builder.HasMany(x=>x.Products).WithOne(x=>x.Users).HasForeignKey(x=>x.UserId);  
 
 
         }

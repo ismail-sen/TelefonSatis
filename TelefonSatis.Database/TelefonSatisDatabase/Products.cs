@@ -14,8 +14,9 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public int Stock { get; set; }
         public int CategoryId { get; set; }//kolon
         public Categories Category { get; set; }//kolon değil relationship yapısıdır
-        public List<Comments> Comments { get; set; }  //relationship
         public Users Users { get; set; }
+        public List<Comments> Comments { get; set; }  //relationship
+        
 
 
     }

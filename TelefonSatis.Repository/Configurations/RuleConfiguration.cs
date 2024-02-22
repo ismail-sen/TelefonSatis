@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace TelefonSatis.Repository.Configurations
 {
-   public class RulesConfigurations : IEntityTypeConfiguration<Rules>
+   public class RuleConfiguration : IEntityTypeConfiguration<Rules>
     {
         public void Configure(EntityTypeBuilder<Rules> builder)
         {
@@ -18,6 +18,8 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(x => x.RulesId).IsRequired(true).UseIdentityColumn(100,1);
             builder.Property(x=>x.RulesName).IsRequired(true).HasMaxLength(250);
             builder.Property(x=>x.Description).HasMaxLength(250);
+
+            
         }
     }
 }
