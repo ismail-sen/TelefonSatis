@@ -11,7 +11,7 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public int RulesId { get; set; }
         public string RulesName { get; set; }
         public string Description { get; set; }
-        public List<Users> Users{ get; set; }
+        //public List<Users> Users{ get; set; }
 
         /*
          Erişim Belirleyicileri

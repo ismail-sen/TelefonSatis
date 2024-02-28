@@ -11,7 +11,7 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public int CategoriesId { get; set; }
         public string CategoryName { get; set; }
        
-        public List<Products> Products { get; set; }
+        //public List<Products> Products { get; set; }
 
       
     }

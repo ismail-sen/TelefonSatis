@@ -21,7 +21,7 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(x=>x.Email).IsRequired(true).HasMaxLength(250);
             builder.Property(x => x.RuleId);
 
-            builder.HasOne(x => x.Rules).WithMany(x => x.Users).HasForeignKey(x => x.RuleId);
+            //builder.HasOne(x => x.Rules).WithMany(x => x.Users).HasForeignKey(x => x.RuleId);
 
             // builder.HasMany(x=>x.Products).WithOne(x=>x.Users).HasForeignKey(x=>x.UserId);  
 

@@ -26,12 +26,12 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(k => k.UserId).IsRequired(true);
             builder.Property(k => k.CreatDate).IsRequired(true).HasColumnType("DateTime");
             
-             builder.HasOne(k=>k.Category).WithMany(k=>k.Products).HasForeignKey(k=>k.CategoryId);
-            //Product ile Categoreis arasında 1-Sonsuz bağlantı yapıldı
+            // builder.HasOne(k=>k.Category).WithMany(k=>k.Products).HasForeignKey(k=>k.CategoryId);
+            ////Product ile Categoreis arasında 1-Sonsuz bağlantı yapıldı
 
-            builder.HasMany(k => k.Comments).WithOne(k => k.Products).HasForeignKey(k => k.ProductId);
+            //builder.HasMany(k => k.Comments).WithOne(k => k.Products).HasForeignKey(k => k.ProductId);
    
-            builder.HasOne(k => k.Users).WithMany(k => k.Products).HasForeignKey(k => k.UserId);
+            //builder.HasOne(k => k.Users).WithMany(k => k.Products).HasForeignKey(k => k.UserId);
             //bu yorum deneme amaçlı yapıldı
 
 

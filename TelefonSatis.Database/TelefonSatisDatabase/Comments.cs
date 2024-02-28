@@ -12,8 +12,8 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public int CommentsId { get; set; }//PK çoğul
         public string CommentsText { get; set; }
         public int ProductId { get; set; }//FK tekil
-        public Products Products { get; set; }
-        public Users Users { get; set; }
+        //public Products Products { get; set; }
+        //public Users Users { get; set; }
 
     }
 }
