@@ -1,0 +1,42 @@
+﻿@using TelefonSatis.Database.TelefonSatisDatabase
+
+@model List<Products>
+@{
+	ViewData["Title"] = "ProductIndex";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table  table-bordered">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">ProductsId</th>
+			<th scope="col">ProductName</th>
+			<th scope="col">Price</th>
+			<th scope="col">Stock</th>
+			<th scope="col">CategoryId</th>
+			<th scope="col">UserId</th>
+			<th scope="col">CreatDate</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th scope="row">1</th>
+				<td>@item.ProductsId</td>
+				<td>@item.ProductName</td>
+				<td>@item.Price</td>
+				<td>@item.Stock</td>
+				<td>@item.CategoryId</td>
+				<td>@item.UserId</td>
+				<td>@item.CreatDate</td>
+			</tr>
+		}
+
+	</tbody>
+</table>
+
+

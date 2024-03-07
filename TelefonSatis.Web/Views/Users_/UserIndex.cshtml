@@ -1,0 +1,42 @@
+﻿@using TelefonSatis.Database.TelefonSatisDatabase
+
+@model List<Users>
+@{
+	ViewData["Title"] = "UserIndex";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">UsersId</th>
+			<th scope="col">UserName</th>
+			<th scope="col">Surname</th>
+			<th scope="col">Password</th>
+			<th scope="col">Address</th>
+			<th scope="col">Email</th>
+			<th scope="col">RuleId</th>
+			<th scope="col">CreateDate</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th scope="row">1</th>
+				<td>@item.UsersId</td>
+				<td>@item.UserName</td>
+				<td>@item.Surname</td>
+				<td>@item.Password</td>
+				<td>@item.Address</td>
+				<td>@item.Email</td>
+				<td>@item.RuleId</td>
+				<td>@item.CreateDate</td>
+			</tr>
+		}
+
+	</tbody>
+</table>

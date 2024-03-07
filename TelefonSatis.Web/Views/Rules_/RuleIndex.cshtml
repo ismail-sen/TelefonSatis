@@ -1,0 +1,32 @@
+﻿@using TelefonSatis.Database.TelefonSatisDatabase
+
+@model List<Rules>
+@{
+	ViewData["Title"] = "RuleIndex";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">RulesId</th>
+			<th scope="col">RulesName</th>
+			<th scope="col">Description</th>
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th scope="row">1</th>
+				<td>@item.RulesId</td>
+				<td>@item.RulesName</td>
+				<td>@item.Description</td>
+			</tr>
+		}
+
+	</tbody>
+</table>

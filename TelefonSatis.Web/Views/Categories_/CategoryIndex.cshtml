@@ -1,0 +1,28 @@
+﻿@using TelefonSatis.Database.TelefonSatisDatabase
+@model List<Categories>
+@{
+	ViewData["Title"] = "CategoryIndex";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+	<thead>
+		<tr>
+			<th scope="col">#</th>
+			<th scope="col">CategoriesId</th>
+			<th scope="col">CategoryName</th>			
+		</tr>
+	</thead>
+	<tbody>
+
+		@foreach (var item in Model)
+		{
+			<tr>
+				<th scope="row">1</th>
+				<td>@item.CategoriesId</td>
+				<td>@item.CategoryName</td>				
+			</tr>
+		}
+
+	</tbody>
+</table>

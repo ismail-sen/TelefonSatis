@@ -1,3 +1,7 @@
+using Microsoft.EntityFrameworkCore;
+using System.Reflection;
+using TelefonSatis.Repository;
+
 namespace TelefonSatis.Web
 {
     public class Program
@@ -8,6 +12,22 @@ namespace TelefonSatis.Web
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddScoped<TelefonSatisDB>();
+
+            #region DB baðlantýsý
+            //.Net Core her projede kullanýlacak yapý için bu sayfaya (Program.cs) tanýmlanmasýný bekler
+            builder.Services.AddDbContext<TelefonSatisDB>(k =>
+            {
+                k.UseSqlServer(builder.Configuration.GetConnectionString("SqlConnection"), option =>
+                {
+                    option.MigrationsAssembly(Assembly.GetAssembly(typeof(TelefonSatisDB)).GetName().Name);
+                });
+
+            });
+
+
+            #endregion
 
             var app = builder.Build();
 
