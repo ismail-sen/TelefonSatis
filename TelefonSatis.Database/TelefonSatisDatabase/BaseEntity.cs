@@ -10,7 +10,7 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
     {
         //abstract new'lenemez
         public int UserId { get; set; }
-        public DateTime CreatDate { get; set; }
+        public DateTime CreateDate { get; set; }
 
 
     }

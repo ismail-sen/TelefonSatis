@@ -7,6 +7,11 @@
 }
 
 
+<div>
+
+	<a href="~/Products_/AddProduct" class="btn btn-success" >Add Product</a>
+</div>
+
 <table class="table  table-bordered">
 	<thead>
 		<tr>
@@ -18,6 +23,8 @@
 			<th scope="col">CategoryId</th>
 			<th scope="col">UserId</th>
 			<th scope="col">CreatDate</th>
+			<th scope="col">Update</th>
+			<th scope="col">Delete</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -32,7 +39,9 @@
 				<td>@item.Stock</td>
 				<td>@item.CategoryId</td>
 				<td>@item.UserId</td>
-				<td>@item.CreatDate</td>
+				<td>@item.CreateDate.ToShortTimeString()</td>
+				<td> <a href="~/Products_/UpdateProduct/@item.ProductsId" class="btn-sm btn-warning"> Update</a> </td>
+				<td> <a href="~/Products_/DeleteProduct/@item.ProductsId" class="btn-sm btn-danger">Delete</a></td>
 			</tr>
 		}
 

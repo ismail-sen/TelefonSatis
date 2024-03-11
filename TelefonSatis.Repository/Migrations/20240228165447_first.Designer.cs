@@ -139,7 +139,7 @@ namespace TelefonSatis.Repository.Migrations
                         .HasMaxLength(250)
                         .HasColumnType("nvarchar(250)");
 
-                    b.Property<DateTime>("CreateDate")
+                    b.Property<DateTime>("CreatDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Email")

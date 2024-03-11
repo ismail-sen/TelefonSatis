@@ -16,7 +16,7 @@ namespace TelefonSatis.Repository.Configurations
             builder.HasKey(x => x.UsersId);
             builder.Property(x => x.UsersId).IsRequired(true).UseIdentityColumn();
             builder.Property(x => x.UserName).IsRequired(true).HasMaxLength(250);
-            builder.Property(x=>x.Surname).IsRequired(true).HasMaxLength(250);
+            builder.Property(x=>x.SurName).IsRequired(true).HasMaxLength(250);
             builder.Property(x => x.Address).IsRequired(true).HasMaxLength(250);
             builder.Property(x=>x.Email).IsRequired(true).HasMaxLength(250);
             builder.Property(x => x.RuleId);

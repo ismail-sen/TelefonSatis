@@ -18,7 +18,7 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(x => x.CommentsText).IsRequired(true).HasMaxLength(2000);
             builder.Property(k => k.ProductId).IsRequired(true);
            // builder.Property(k => k.UserId).IsRequired(true);
-            builder.Property(k => k.CreatDate).IsRequired(true).HasColumnType("DateTime");
+            builder.Property(k => k.CreateDate).IsRequired(true).HasColumnType("DateTime");
 
            // builder.HasOne(k => k.Users).WithMany(k => k.Comments);//.HasForeignKey(k => k.UserId);
             // builder.HasOne(k => k.Products).WithMany(k => k.Comments).HasForeignKey(k => k.ProductId);

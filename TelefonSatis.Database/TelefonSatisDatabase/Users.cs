@@ -12,7 +12,7 @@ namespace TelefonSatis.Database.TelefonSatisDatabase
         public int UsersId { get; set; }//PK
 
         public string UserName { get; set; }
-        public string Surname { get; set; }
+        public string SurName { get; set; }
         public int Password { get; set; }
         public string Address { get; set; }
         public string Email { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using TelefonSatis.Database.TelefonSatisDatabase;
 using TelefonSatis.Repository;
 
 namespace TelefonSatis.Web.Controllers
@@ -17,5 +18,36 @@ namespace TelefonSatis.Web.Controllers
 			
 			return View(ruleList);
 		}
-	}
+		[HttpGet]
+		public IActionResult AddRule()
+		{
+			var rule = _db.Rules.ToList();
+			ViewBag.Rules = rule;
+			//ViewData["Category"] = category;
+			//TempData["Category"] = category;//daha büyük datalar için kullanılır
+
+			return View();
+		}
+
+		[HttpPost]
+        public IActionResult AddRule(string ruleName, string description)
+        {
+
+            Rules ekle = new Rules();
+            ekle.RulesName = ruleName;
+            ekle.Description = description;
+            
+            _db.Rules.Add(ekle);
+            int saveProduct = _db.SaveChanges();//ekleme başarılı ise 1 döner
+
+            if (saveProduct > 0)
+            {
+
+
+            }
+            
+
+            return View();
+        }
+    }
 }

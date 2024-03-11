@@ -1,0 +1,46 @@
+﻿@{
+    ViewData["Title"] = "AddUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<form method="post" action="AddUser">
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">User Name</label>
+        <input class="form-control" type="text" name="userName" placeholder="User Name">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Sur Name</label>
+        <input class="form-control" name="surName" type="text" placeholder="Sur Name">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Address</label>
+        <input class="form-control" name="address" type="text" placeholder="Address">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input class="form-control" name="email" type="text" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Password</label>
+        <input class="form-control" name="password" type="text" placeholder="Password">
+    </div>
+
+    @* <div class="form-group">
+        <label for="exampleFormControlSelect1">Category Choise</label>
+        <select class="form-control" name="categoryId" id="exampleFormControlSelect1">
+            <option selected> Seçiniz..</option>
+            @foreach (var item in ViewBag.Category)
+            {
+                <option value="@item.CategoriesId"> @item.CategoryName</option>
+            }
+
+
+        </select>
+    </div> *@
+
+    <input type="submit" value="KAYDET" class="btn btn-success" />
+</form>

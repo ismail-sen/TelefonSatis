@@ -24,7 +24,7 @@ namespace TelefonSatis.Repository.Configurations
             builder.Property(m => m.Stock).IsRequired(true).HasColumnType("int");
             //bağlantı yapmak
             builder.Property(k => k.UserId).IsRequired(true);
-            builder.Property(k => k.CreatDate).IsRequired(true).HasColumnType("DateTime");
+            builder.Property(k => k.CreateDate).IsRequired(true).HasColumnType("DateTime");
             
             // builder.HasOne(k=>k.Category).WithMany(k=>k.Products).HasForeignKey(k=>k.CategoryId);
             ////Product ile Categoreis arasında 1-Sonsuz bağlantı yapıldı
