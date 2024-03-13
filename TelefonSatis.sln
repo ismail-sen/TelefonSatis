@@ -19,6 +19,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TelefonSatis.Service", "Tel
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B1D5EB9F-062E-4279-A073-8F8B7A4D7661}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelefonSatis.WEB_UI", "TelefonSatis.WEB_UI\TelefonSatis.WEB_UI.csproj", "{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{E75A5491-C8D8-4113-B534-B73224597E79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E75A5491-C8D8-4113-B534-B73224597E79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E75A5491-C8D8-4113-B534-B73224597E79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -55,6 +61,7 @@ Global
 		{613A834D-B59C-46C8-8C88-B4492E0CDB5E} = {97C7D7F0-C813-492C-9C58-B56B3D0051D5}
 		{BF875835-1578-40C9-9A04-904CF7A506FF} = {97C7D7F0-C813-492C-9C58-B56B3D0051D5}
 		{E75A5491-C8D8-4113-B534-B73224597E79} = {97C7D7F0-C813-492C-9C58-B56B3D0051D5}
+		{C436A1DB-0507-4DBE-98BE-F306ABD6DDD4} = {D0C3CDB8-9AB4-41ED-86E6-C5F8E908B1F5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A682823C-99BE-4675-8D69-23CCE26370BB}

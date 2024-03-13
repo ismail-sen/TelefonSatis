@@ -8,14 +8,14 @@ namespace TelefonSatis.Web.Controllers
 	{
 		TelefonSatisDB _db;
 
-	public Rules_Controller(TelefonSatisDB db)//DI
-	{
-		_db = db;
-	}
+		public Rules_Controller(TelefonSatisDB db)//DI
+		{
+			_db = db;
+		}
 		public IActionResult RuleIndex()
 		{
-		var ruleList = _db.Rules.ToList();
-			
+			var ruleList = _db.Rules.ToList();
+
 			return View(ruleList);
 		}
 		[HttpGet]
@@ -30,18 +30,18 @@ namespace TelefonSatis.Web.Controllers
 		}
 
 		[HttpPost]
-        public IActionResult AddRule(string ruleName, string description)
-        {
+		public IActionResult AddRule(string ruleName, string description)
+		{
 
-            Rules ekle = new Rules();
-            ekle.RulesName = ruleName;
-            ekle.Description = description;
-            
-            _db.Rules.Add(ekle);
-            int saveProduct = _db.SaveChanges();//ekleme başarılı ise 1 döner
+			Rules ekle = new Rules();
+			ekle.RulesName = ruleName;
+			ekle.Description = description;
 
-            if (saveProduct > 0)
-            {
+			_db.Rules.Add(ekle);
+			int saveProduct = _db.SaveChanges();//ekleme başarılı ise 1 döner
+
+			if (saveProduct > 0)
+			{
 				ViewBag.mesaj = "<b style='color:green'>" + ruleName + " ürünü başarılı bir şekilde eklendi</b>";
 			}
 			else
@@ -50,7 +50,7 @@ namespace TelefonSatis.Web.Controllers
 			}
 
 			return View();
-        }
+		}
 
 		//get
 		public ActionResult UpdateRule(int Id)
@@ -85,7 +85,7 @@ namespace TelefonSatis.Web.Controllers
 
 				getRule.RulesName = ruleName;
 				getRule.Description = description;
-				
+
 
 				int update = _db.SaveChanges();
 
@@ -110,6 +110,57 @@ namespace TelefonSatis.Web.Controllers
 
 				return View("Error");//bir sayfası
 			}
+		}
+
+		//ctrl+m+o=> bütün methodların kodlarını gizle
+		//ctrl+m+l=> bütün methodların kodlarını gigöster
+
+
+		public ActionResult DeleteRule(int Id)
+		{
+			try
+			{
+				var getRule = _db.Rules.Where(k => k.RulesId == Id).FirstOrDefault();
+				if (getRule != null)
+				{
+					return View(getRule);
+				}
+			}
+			catch (Exception)
+			{
+			}
+
+			return View();
+		}
+
+		[ActionName("DeleteRule")]
+		[HttpPost]
+		public ActionResult RuleRemove(int RuleId)
+		{
+
+			try
+			{
+				var deleteRule = _db.Rules.Where(k => k.RulesId == RuleId).FirstOrDefault();
+				if (deleteRule != null)
+				{
+
+					_db.Rules.Remove(deleteRule);
+					int removeSave = _db.SaveChanges();
+					if (removeSave > 0) {
+						ViewBag.mesajSil = "Başarılı şekilde silindi";
+
+						return RedirectToAction("RuleIndex");
+					}
+
+				}
+
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+			return View();
 		}
 	}
 }
