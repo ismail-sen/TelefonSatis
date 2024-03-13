@@ -49,13 +49,78 @@ namespace TelefonSatis.Web.Controllers
 
 			if (saveUser > 0)
 			{
-
+				ViewBag.mesaj = "<b style='color:green'>" + userName + " ürünü başarılı bir şekilde eklendi</b>";
+			}
+			else
+			{
+				ViewBag.mesaj = "<b style='color:red'>" + userName + " ürünü eklenemedi</b>";
 
 			}
 			//var category = _db.Categories.ToList();
 			//ViewBag.Category = category;
 
 			return View();
+		}
+		//get
+		public ActionResult UpdateUser(int Id)
+		{
+			//Linq ile select *from Products where ProductsId=1000 kodun aynısı aşağıdaki gibi olacaktır
+			var getUserFind = _db.Users.Where(k => k.UsersId == Id).FirstOrDefault();
+			//Where
+			//FirstOrDefault=> eşleşen ilk değeri getirir
+			//EF- Linq ile kodlama 8-9 kod yapısı var , nettten bakılabilir
+			try
+			{
+				ViewBag.userName = _db.Users.Where(k => k.UsersId == getUserFind.UsersId).FirstOrDefault().UserName;
+
+			}
+			catch (Exception)
+			{
+			}
+
+			//yukardaki linq , sql karşılığı select CategoryName from Categories where CategoriesId=2 şeklindedir
+
+			ViewBag.User = _db.Users.ToList();
+			return View(getUserFind);
+		}
+
+		[HttpPost]
+		public ActionResult UpdateUser(int UsersId, string userName, string surName, string address, string email, string password, int ruleId)
+		{
+			try
+			{
+				var getUser = _db.Users.Where(k => k.UsersId == UsersId).FirstOrDefault();
+				//DB'deki isim = güncellenmek istenen isim
+				getUser.UserName = userName;
+				getUser.SurName = surName;
+				getUser.Address = address;
+				getUser.Email = email;
+				getUser.Password = Convert.ToInt32(password);
+				getUser.RuleId = ruleId;
+
+				int update = _db.SaveChanges();
+
+
+				ViewBag.User = _db.Users.ToList();
+
+				if (update > 0)
+				{
+					//işlem başarılı
+					ViewBag.mesaj = "<b style='color:green'>ürün başarılı bir şekilde güncellendi</b>";
+					return View(getUser);
+				}
+				else
+				{
+					ViewBag.mesaj = "<b style='color:red'> ürün güncenlenemedi</b>";
+					return View();
+				}
+
+			}
+			catch (Exception)
+			{
+
+				return View("Error");//bir sayfası
+			}
 		}
 	}
 }

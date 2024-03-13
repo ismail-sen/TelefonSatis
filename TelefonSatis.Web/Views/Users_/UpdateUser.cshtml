@@ -1,0 +1,46 @@
+﻿@using TelefonSatis.Database.TelefonSatisDatabase
+
+@model Users
+
+@{
+    ViewData["Title"] = "UpdateUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post" action="AddUser">
+
+    <div>
+
+        <input name="UsersId" value="@Model.UsersId" type="hidden" />
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">User Name</label>
+        <input class="form-control" value="@Model.UserName" type="text" name="userName" placeholder="User Name">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Sur Name</label>
+        <input class="form-control" value="@Model.SurName" name="surName" type="text" placeholder="Sur Name">
+    </div>
+
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Address</label>
+        <input class="form-control" value="@Model.Address" name="address" type="text" placeholder="Address">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Email</label>
+        <input class="form-control" value="@Model.Email" name="email" type="text" placeholder="Email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Password</label>
+        <input class="form-control" value="@Model.Password" name="password" type="text" placeholder="Password">
+    </div>
+
+    <input type="submit" value="GÜNCELLE" class="btn btn-success" />
+    <hr />
+    <p>
+        @Html.Raw(ViewBag.mesaj)
+    </p>
+</form>
+

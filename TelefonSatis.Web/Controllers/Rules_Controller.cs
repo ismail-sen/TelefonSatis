@@ -42,12 +42,74 @@ namespace TelefonSatis.Web.Controllers
 
             if (saveProduct > 0)
             {
+				ViewBag.mesaj = "<b style='color:green'>" + ruleName + " ürünü başarılı bir şekilde eklendi</b>";
+			}
+			else
+			{
+				ViewBag.mesaj = "<b style='color:red'>" + ruleName + " ürünü eklenemedi</b>";
+			}
 
-
-            }
-            
-
-            return View();
+			return View();
         }
-    }
+
+		//get
+		public ActionResult UpdateRule(int Id)
+		{
+			//Linq ile select *from Products where ProductsId=1000 kodun aynısı aşağıdaki gibi olacaktır
+			var getRuleFind = _db.Rules.Where(k => k.RulesId == Id).FirstOrDefault();
+			//Where
+			//FirstOrDefault=> eşleşen ilk değeri getirir
+			//EF- Linq ile kodlama 8-9 kod yapısı var , nettten bakılabilir
+			try
+			{
+				ViewBag.ruleName = _db.Rules.Where(k => k.RulesId == getRuleFind.RulesId).FirstOrDefault().RulesName;
+
+			}
+			catch (Exception)
+			{
+			}
+
+			//yukardaki linq , sql karşılığı select CategoryName from Categories where CategoriesId=2 şeklindedir
+
+			ViewBag.Rule = _db.Rules.ToList();
+			return View(getRuleFind);
+		}
+
+		[HttpPost]
+		public ActionResult UpdateRule(int RulesId, string ruleName, string description)
+		{
+			try
+			{
+				var getRule = _db.Rules.Where(k => k.RulesId == RulesId).FirstOrDefault();
+				//DB'deki isim = güncellenmek istenen isim
+
+				getRule.RulesName = ruleName;
+				getRule.Description = description;
+				
+
+				int update = _db.SaveChanges();
+
+
+				ViewBag.Rule = _db.Rules.ToList();
+
+				if (update > 0)
+				{
+					//işlem başarılı
+					ViewBag.mesaj = "<b style='color:green'>ürün başarılı bir şekilde güncellendi</b>";
+					return View(getRule);
+				}
+				else
+				{
+					ViewBag.mesaj = "<b style='color:red'> ürün güncenlenemedi</b>";
+					return View();
+				}
+
+			}
+			catch (Exception)
+			{
+
+				return View("Error");//bir sayfası
+			}
+		}
+	}
 }

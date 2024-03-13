@@ -15,7 +15,9 @@
 		<tr>
 			<th scope="col">#</th>
 			<th scope="col">CategoriesId</th>
-			<th scope="col">CategoryName</th>			
+			<th scope="col">CategoryName</th>	
+			<th scope="col">Update</th>
+			<th scope="col">Delete</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -25,7 +27,9 @@
 			<tr>
 				<th scope="row">1</th>
 				<td>@item.CategoriesId</td>
-				<td>@item.CategoryName</td>				
+				<td>@item.CategoryName</td>
+				<td> <a href="~/Categories_/UpdateCategory/@item.CategoriesId" class="btn-sm btn-warning"> Update</a> </td>
+				<td> <a href="~/Categories__/DeleteCategory/@item.CategoriesId" class="btn-sm btn-danger">Delete</a></td>
 			</tr>
 		}
 

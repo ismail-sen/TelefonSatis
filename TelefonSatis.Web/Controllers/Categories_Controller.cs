@@ -44,18 +44,76 @@ namespace TelefonSatis.Web.Controllers
 
 			if (saveCategory > 0)
 			{
+                ViewBag.mesaj = "<b style='color:green'>" + categoryName + " ürünü başarılı bir şekilde eklendi</b>";
+            }
+            else
+            {
+                ViewBag.mesaj = "<b style='color:red'>" + categoryName + " ürünü eklenemedi</b>";
 
+            }
+            //var category = _db.Categories.ToList();
+            //ViewBag.Category = category;
 
-			}
-			//var category = _db.Categories.ToList();
-			//ViewBag.Category = category;
-
-			return View();
+            return View();
 		}
+        //get
+        public ActionResult UpdateCategory(int Id)
+        {
+            //Linq ile select *from Products where ProductsId=1000 kodun aynısı aşağıdaki gibi olacaktır
+            var getCategoryFind = _db.Categories.Where(k => k.CategoriesId == Id).FirstOrDefault();
+            //Where
+            //FirstOrDefault=> eşleşen ilk değeri getirir
+            //EF- Linq ile kodlama 8-9 kod yapısı var , nettten bakılabilir
+            try
+            {
+                ViewBag.categoryName = _db.Categories.Where(k => k.CategoriesId == getCategoryFind.CategoriesId).FirstOrDefault().CategoryName;
 
-	}
+            }
+            catch (Exception)
+            {
+            }
+
+            //yukardaki linq , sql karşılığı select CategoryName from Categories where CategoriesId=2 şeklindedir
+
+            ViewBag.Category = _db.Categories.ToList();
+            return View(getCategoryFind);
+        }
+
+        [HttpPost]
+        public ActionResult Updatecategory(int CategoriesId, string categoryName )
+        {
+            try
+            {
+                var getCategory = _db.Categories.Where(k => k.CategoriesId == CategoriesId).FirstOrDefault();
+                //DB'deki isim = güncellenmek istenen isim
+                getCategory.CategoryName = categoryName;
+                
+
+                int update = _db.SaveChanges();
 
 
+                ViewBag.Category = _db.Categories.ToList();
+
+                if (update > 0)
+                {
+                    //işlem başarılı
+                    ViewBag.mesaj = "<b style='color:green'>ürün başarılı bir şekilde güncellendi</b>";
+                    return View(getCategory);
+                }
+                else
+                {
+                    ViewBag.mesaj = "<b style='color:red'> ürün güncenlenemedi</b>";
+                    return View();
+                }
+
+            }
+            catch (Exception)
+            {
+
+                return View("Error");//bir sayfası
+            }
+        }
+    }
 }
 
 

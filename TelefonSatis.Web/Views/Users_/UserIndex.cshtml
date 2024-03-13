@@ -21,6 +21,8 @@
 			<th scope="col">Email</th>
 			<th scope="col">RuleId</th>
 			<th scope="col">CreateDate</th>
+			<th scope="col">Update</th>
+			<th scope="col">Delete</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -37,6 +39,8 @@
 				<td>@item.Email</td>
 				<td>@item.RuleId</td>
 				<td>@item.CreateDate</td>
+				<td> <a href="~/Users_/UpdateUser/@item.UsersId" class="btn-sm btn-warning"> Update</a> </td>
+				<td> <a href="~/Users_/DeleteUser/@item.UsersId" class="btn-sm btn-danger">Delete</a></td>
 			</tr>
 		}
 

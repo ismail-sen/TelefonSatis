@@ -17,6 +17,8 @@
 			<th scope="col">RulesId</th>
 			<th scope="col">RulesName</th>
 			<th scope="col">Description</th>
+			<th scope="col">Update</th>
+			<th scope="col">Delete</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -28,6 +30,8 @@
 				<td>@item.RulesId</td>
 				<td>@item.RulesName</td>
 				<td>@item.Description</td>
+				<td> <a href="~/Rules_/UpdateRule/@item.RulesId" class="btn-sm btn-warning"> Update</a> </td>
+				<td> <a href="~/Rules_/DeleteRule/@item.RulesId" class="btn-sm btn-danger">Delete</a></td>
 			</tr>
 		}
 
