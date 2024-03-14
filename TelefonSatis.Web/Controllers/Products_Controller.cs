@@ -81,7 +81,7 @@ namespace TelefonSatis.Web.Controllers
 			catch (Exception)
 			{
 			}
-			
+
 			//yukardaki linq , sql karşılığı select CategoryName from Categories where CategoriesId=2 şeklindedir
 
 			ViewBag.Category = _db.Categories.ToList();
@@ -123,9 +123,53 @@ namespace TelefonSatis.Web.Controllers
 
 				return View("Error");//bir sayfası
 			}
+
+		}
+		public ActionResult DeleteProduct(int Id)
+		{
+			try
+			{
+				var getProduct = _db.Products.Where(k => k.ProductsId == Id).FirstOrDefault();
+				if (getProduct != null)
+				{
+					return View(getProduct);
+				}
+			}
+			catch (Exception)
+			{
+			}
+
+			return View();
 		}
 
+		[ActionName("DeleteProduct")]
+		[HttpPost]
+		public ActionResult ProductRemove (int ProductId)
+		{
+			try
+			{
+				var deleteProduct = _db.Products.Where(k => k.ProductsId == ProductId).FirstOrDefault();
+				if (deleteProduct != null)
+				{
+					_db.Products.Remove(deleteProduct);
+					int removeSave =_db.SaveChanges();
+					if(removeSave > 0)
+					{
+						//ViewBag.mesajSil = "Başarılı şekilde silindi.";
+						ViewBag.mesaj = "<b style='color:green'>Başarılı şekilde silindi.</b>";
+						
+						//return View(deleteProduct);
+						return RedirectToAction("ProductIndex");
+					}
+				}
 
-	}
+			}
+			catch (Exception)
+			{
+			}
+			return View();
+		}
+
+    }
 }
 

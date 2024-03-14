@@ -113,6 +113,53 @@ namespace TelefonSatis.Web.Controllers
                 return View("Error");//bir sayfası
             }
         }
+        public ActionResult DeleteCategory(int Id)
+        {
+            try
+            {
+                var getCategory = _db.Categories.Where(k => k.CategoriesId == Id).FirstOrDefault();
+                if (getCategory != null)
+                {
+                    return View(getCategory);
+                }
+            }
+            catch (Exception)
+            {
+            }
+
+            return View();
+        }
+
+        [ActionName("DeleteCategory")]
+        [HttpPost]
+        public ActionResult CategoryRemove(int CategoryId)
+        {
+
+            try
+            {
+                var deleteCategory = _db.Categories.Where(k => k.CategoriesId == CategoryId).FirstOrDefault();
+                if (deleteCategory != null)
+                {
+
+                    _db.Categories.Remove(deleteCategory);
+                    int removeSave = _db.SaveChanges();
+                    if (removeSave > 0)
+                    {
+                        ViewBag.mesajSil = "Başarılı şekilde silindi";
+
+                        return RedirectToAction("CategoryIndex");
+                    }
+
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+            return View();
+        }
     }
 }
 

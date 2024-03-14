@@ -157,9 +157,8 @@ namespace TelefonSatis.Web.Controllers
 			}
 			catch (Exception)
 			{
-
-				throw;
-			}
+                throw;
+            }
 			return View();
 		}
 	}
