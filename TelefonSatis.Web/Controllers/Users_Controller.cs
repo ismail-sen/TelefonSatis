@@ -122,6 +122,52 @@ namespace TelefonSatis.Web.Controllers
 				return View("Error");//bir sayfası
 			}
 		}
+		public ActionResult DeleteUser(int Id)
+		{
+			try
+			{
+				var getUser = _db.Users.Where(k => k.UsersId == Id).FirstOrDefault();
+				if (getUser != null)
+				{
+					return View(getUser);
+				}
+			}
+			catch (Exception)
+			{
+
+				throw;
+			}
+			return View();
+
+		}
+		[ActionName("DeleteUser")]
+		[HttpPost]
+		public ActionResult UserRemove(int UserId)
+		{
+			try
+			{
+				var deleteUser = _db.Users.Where(k=>k.UsersId == UserId).FirstOrDefault();
+				if (deleteUser != null)
+				{
+					_db.Users.Remove(deleteUser);
+					int removeSave = _db.SaveChanges();
+					if (removeSave > 0)
+					{
+						ViewBag.mesajSil = "Başarılı şekilde silindi";
+
+						return RedirectToAction("UserIndex");
+					}
+				}
+
+			}
+			catch (Exception)
+
+			{
+				throw;
+			}
+
+			return View();
+		}
 	}
 }
 	
