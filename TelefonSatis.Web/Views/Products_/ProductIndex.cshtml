@@ -9,20 +9,20 @@
 
 <div>
 
-	<a href="~/Products_/AddProduct" class="btn btn-success" >Add Product</a>
+	<a href="~/Products_/AddProduct" class="btn btn-success">Add Product</a>
 </div>
 
 <table class="table  table-bordered">
-	<thead>
+	<thead class="bg-info">
 		<tr>
 			<th scope="col">#</th>
-			<th scope="col">ProductsId</th>
-			<th scope="col">ProductName</th>
+			<th scope="col">ID</th>
+			<th scope="col">Product Name</th>
 			<th scope="col">Price</th>
 			<th scope="col">Stock</th>
-			<th scope="col">CategoryId</th>
-			<th scope="col">UserId</th>
-			<th scope="col">CreatDate</th>
+			<th scope="col">Category Name</th>
+			<th scope="col">User Name-Surname</th>
+			<th scope="col">Creat Date</th>
 			<th scope="col">Update</th>
 			<th scope="col">Delete</th>
 		</tr>
@@ -37,9 +37,31 @@
 				<td>@item.ProductName</td>
 				<td>@item.Price</td>
 				<td>@item.Stock</td>
-				<td>@item.CategoryId</td>
-				<td>@item.UserId</td>
-				<td>@item.CreateDate.ToShortTimeString()</td>
+				<td>
+					
+					@foreach (var categoryItem in ViewBag.Category)
+					{
+						if (categoryItem.CategoriesId == item.CategoryId)
+						{
+							<p>@categoryItem.CategoryName</p>
+						}
+
+					}
+
+				</td>
+				<td>
+					@foreach (var userItem in ViewBag.User)
+					{
+
+						if (userItem.UsersId==item.UserId)
+						{
+							<p>@userItem.UserName @userItem.SurName
+								</p>
+						}
+					}
+
+				</td>
+				<td>@item.CreateDate</td>
 				<td> <a href="~/Products_/UpdateProduct/@item.ProductsId" class="btn-sm btn-warning"> Update</a> </td>
 				<td> <a href="~/Products_/DeleteProduct/@item.ProductsId" class="btn-sm btn-danger">Delete</a></td>
 			</tr>

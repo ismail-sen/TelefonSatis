@@ -4,23 +4,23 @@ using TelefonSatis.Repository;
 
 namespace TelefonSatis.Web.Controllers
 {
-	public class Users_Controller : Controller
+	public class Users_Controller : BaseController1
 	{
 		TelefonSatisDB _db;
 
-	public Users_Controller(TelefonSatisDB db)//DI
-	{
-		_db = db;
-	}
-		
-	public IActionResult UserIndex()
-	{
-		var userList = _db.Users.ToList();
-		return View(userList);
-	}
+		public Users_Controller(TelefonSatisDB db)//DI
+		{
+			_db = db;
+		}
 
-	[HttpGet]
-	public IActionResult AddUser()
+		public IActionResult UserIndex()
+		{
+			var userList = _db.Users.ToList();
+			return View(userList);
+		}
+
+		[HttpGet]
+		public IActionResult AddUser()
 		{
 			var user = _db.Users.ToList();
 			ViewBag.Users = user;
@@ -31,17 +31,17 @@ namespace TelefonSatis.Web.Controllers
 		}
 
 
-	[HttpPost]
-	public IActionResult AddUser(string userName, string surName, string address, string email, string password, int ruleId)
+		[HttpPost]
+		public IActionResult AddUser(string userName, string surName, string address, string email, string password, int ruleId)
 		{
 
 			Users ekle = new Users();
 			ekle.UserName = userName;
-            ekle.SurName = surName;
-            ekle.Address = address;
-            ekle.Email = email;         
-			ekle.Password = Convert.ToInt32(password);       
-            ekle.RuleId = ruleId;
+			ekle.SurName = surName;
+			ekle.Address = address;
+			ekle.Email = email;
+			ekle.Password = Convert.ToInt32(password);
+			ekle.RuleId = ruleId;
 			ekle.CreateDate = DateTime.Now;
 			//datalar , db deki tabloya atılması için eşitleme yapıldı
 			_db.Users.Add(ekle);
@@ -146,7 +146,7 @@ namespace TelefonSatis.Web.Controllers
 		{
 			try
 			{
-				var deleteUser = _db.Users.Where(k=>k.UsersId == UserId).FirstOrDefault();
+				var deleteUser = _db.Users.Where(k => k.UsersId == UserId).FirstOrDefault();
 				if (deleteUser != null)
 				{
 					_db.Users.Remove(deleteUser);
@@ -168,9 +168,20 @@ namespace TelefonSatis.Web.Controllers
 
 			return View();
 		}
+
+
+
+		public ActionResult Login()
+		{
+			if (true)
+			{
+
+				UserId = 1;
+				return View();
+			}
+		}
 	}
 }
-	
 
 
-	
+

@@ -4,7 +4,7 @@ using TelefonSatis.Repository;
 
 namespace TelefonSatis.Web.Controllers
 {
-	public class Products_Controller : Controller
+	public class Products_Controller : BaseController1
 	{
 		//Linq, Katmanlı mimariler, UnitOf Work, Repository Design pattern olmadan bu sayfa test amaçlı (bahsedilen yapılar olmadan nasıl proje kullanılır örneği için) açıldı
 		TelefonSatisDB _db;
@@ -16,7 +16,11 @@ namespace TelefonSatis.Web.Controllers
 		public IActionResult ProductIndex()
 		{
 			var productList = _db.Products.ToList();//Bütün Products tablosundaki dataları ToList() ile listelemiş olduk
+			var category=_db.Categories.ToList();
+			ViewBag .Category = category;
 
+			var userInfo=_db.Users.ToList();
+			ViewBag.User = userInfo;
 			return View(productList);
 		}
 
@@ -44,7 +48,7 @@ namespace TelefonSatis.Web.Controllers
 			ekle.Stock = Convert.ToInt32(stock);
 			ekle.CategoryId = categoryId;
 			ekle.CreateDate = DateTime.Now;
-			ekle.UserId = 0;
+			ekle.UserId = UserId;
 			//datalar , db deki tabloya atılması için eşitleme yapıldı
 			_db.Products.Add(ekle);
 			int saveProduct = _db.SaveChanges();//ekleme başarılı ise 1 döner
