@@ -10,10 +10,26 @@ namespace TelefonSatis.Repository.Repositories
 {
     internal class ProductRespository : GenericRepository<Products>, IProductRepository
     {
+        public ProductRespository(TelefonSatisDB db) : base(db)
+        {
+        }
+
         public int ProductCountWithCategory(int categoryId)
         {
             var getirUrunler = _db.Products.Where(k => k.CategoryId == categoryId);
             return getirUrunler.Count();
+        }
+        public int ProductCountWithUser(int UserId)
+        {
+            var getirUrunler = _db.Products.Where(k => k.UserId == UserId);
+            return getirUrunler.Count();
+        }
+
+        public List<Products> ProductListWithCategory(int categoryId)
+        {
+            var list = _db.Products.Where(k => k.CategoryId == categoryId).ToList();
+            return list;
+
         }
     }
 }

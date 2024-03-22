@@ -12,6 +12,8 @@ namespace TelefonSatis.Database.IRepository
         //IGenericRepository dışında kodlaman geeken bir method varsa onu da ek olarak bu ksımda tanımlamak gereklidir
 
         int ProductCountWithCategory(int categoryId);//Kategoriye göre ürün sayısı
+        List<Products> ProductListWithCategory(int categoryId);//Kategoriye göre ürün sayısı
 
+        int ProductCountWithUser(int UserId);
     }
 }
