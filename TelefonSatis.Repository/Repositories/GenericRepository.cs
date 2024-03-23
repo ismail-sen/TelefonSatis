@@ -40,7 +40,8 @@ namespace TelefonSatis.Repository.Repositories
 
         public IQueryable<TEntity> GetAll()
         {
-            throw new NotImplementedException();
+          // return _dbSet.ToList();
+           return _dbSet.AsQueryable();
         }
 
         public void Update(TEntity entity)

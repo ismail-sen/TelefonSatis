@@ -8,7 +8,7 @@ using TelefonSatis.Database.TelefonSatisDatabase;
 
 namespace TelefonSatis.Repository.Repositories
 {
-    internal class ProductRespository : GenericRepository<Products>, IProductRepository
+    public class ProductRespository : GenericRepository<Products>, IProductRepository
     {
         public ProductRespository(TelefonSatisDB db) : base(db)
         {
