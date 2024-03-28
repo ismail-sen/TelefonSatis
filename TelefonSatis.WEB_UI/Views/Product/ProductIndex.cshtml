@@ -1,12 +1,33 @@
 ﻿@using TelefonSatis.Database.TelefonSatisDatabase
 
 
-@model IQueryable< Products>
+@model List< SP_ProductListWithCategory >
 @{
 	ViewData["Title"] = "ProductIndex";
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<header class="header navbar-area">
+	<div class="container">
+		<div class="row align-items-center">
+			<div class="col-lg-8 col-md-6 col-12">
+				<div class="nav-inner">
+					<div class="mega-category-menu">
+						<span class="cat-button"><i class="lni lni-menu"></i>All Categories</span>
+						<ul class="sub-category">
+							@foreach (var category in ViewBag.Category)
+							{
+								<li>
+									<a href="product-grids.html">@category.CategoryName <i class="lni lni-chevron-right"></i></a>
+								</li>
+							}
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</header>
 
 <section class="trending-product section" style="margin-top: 12px;">
 	<div class="container">
@@ -27,13 +48,13 @@
 						<div class="product-image">
 							<img src="~/ShopGrids/assets/images/products/product-1.jpg" alt="#">
 							<div class="button">
-								<a href="product-details.html" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
+								<a href="#" class="btn"><i class="lni lni-cart"></i> Add to Cart</a>
 							</div>
 						</div>
 						<div class="product-info">
-							<span class="category">@item.CategoryId</span>
+							<span class="category">@item.CategoryName</span>
 							<h4 class="title">
-								<a href="product-grids.html">@item.ProductName</a>
+								<a href="~/Product/ProductDetail/@item.ProductsId">@item.ProductName</a>
 							</h4>
 							<ul class="review">
 								<li><i class="lni lni-star-filled"></i></li>

@@ -15,5 +15,6 @@ namespace TelefonSatis.Database.IRepository
         List<Products> ProductListWithCategory(int categoryId);//Kategoriye göre ürün sayısı
 
         int ProductCountWithUser(int UserId);
+        List<SP_ProductListWithCategory> ProductListWithCategory();
     }
 }

@@ -31,5 +31,11 @@ namespace TelefonSatis.Repository.Repositories
             return list;
 
         }
-    }
+
+		public List<SP_ProductListWithCategory> ProductListWithCategory()
+		{
+            var list = _db.SP_ProductListWithCategories();
+            return list;
+		}
+	}
 }

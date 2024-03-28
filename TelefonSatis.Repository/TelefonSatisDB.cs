@@ -22,6 +22,14 @@ namespace TelefonSatis.Repository
         public DbSet<Comments> Comments { get; set; }
         public DbSet<Rules> Rules { get; set; }
         public DbSet<Users> Users { get; set; }
+        public DbSet<SP_ProductListWithCategory> SP_ProductListCategory{ get; set; }
+
+        public List<SP_ProductListWithCategory> SP_ProductListWithCategories()
+        {
+            var result = SP_ProductListCategory.FromSqlRaw("exec sp_ProductListWithCategory").ToList();//her çağırdığımda exec olmalı
+            return result;
+
+		}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -39,7 +47,12 @@ namespace TelefonSatis.Repository
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 
             base.OnModelCreating(modelBuilder);
-        }
+            modelBuilder.Entity<SP_ProductListWithCategory>(entity =>
+            {
+                entity.HasNoKey();
+            });
+
+		}
 
     }
 }
