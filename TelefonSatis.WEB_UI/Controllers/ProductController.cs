@@ -23,12 +23,12 @@ namespace TelefonSatis.WEB_UI.Controllers
             //Session=> Server da değer turmak için kullanılır
             //Cookie=> Kullanıcı localinde değer tutmak için kullanılır
 
-            HttpContext.Session.SetString("Sepet", "Sepete olmasını istediğiniz değer");//Session core için bu şekilde oluşturulur
+            //HttpContext.Session.SetString("Sepet", "Sepete olmasını istediğiniz değer");//Session core için bu şekilde oluşturulur
 
-            HttpContext.Session.GetString("Sepet");//Çağırma
-            //***************************************************
-            string userName = "ismail";
-            Response.Cookies.Append("username", userName);//Cookie create etmek 
+            //HttpContext.Session.GetString("Sepet");//Çağırma
+            ////***************************************************
+            //string userName = "ismail";
+            //Response.Cookies.Append("username", userName);//Cookie create etmek 
             #endregion
 
             ViewBag.Category = _categoryRepository.GetAll();
@@ -41,6 +41,13 @@ namespace TelefonSatis.WEB_UI.Controllers
         {
             var getProduct = _productRepository.GetById(Id);
             return View(getProduct);
+        }
+
+        public   IActionResult AddBasket(int productId,int userId)
+        {
+            var getProduct = _productRepository.GetById(productId);
+
+            return Json(getProduct);
         }
     }
 }

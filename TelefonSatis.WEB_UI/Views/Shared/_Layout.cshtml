@@ -161,7 +161,8 @@
                                 <div class="cart-items">
                                     <a href="javascript:void(0)" class="main-btn">
                                         <i class="lni lni-cart"></i>
-                                        <span class="total-items">2</span>
+                                        @* <span class="total-items" id="cartCount">0</span> *@
+                                        <input class="total-items" id="cartCount" value="0" />
                                     </a>
                                     <!-- Shopping Item -->
                                     <div class="shopping-item">
@@ -169,7 +170,8 @@
                                             <span>2 Items</span>
                                             <a href="cart.html">View Cart</a>
                                         </div>
-                                        <ul class="shopping-list">
+                                        <ul class="shopping-list" id="cartlist">
+
                                             <li>
                                                 <a href="javascript:void(0)" class="remove" title="Remove this item"><i
                                                         class="lni lni-close"></i></a>
@@ -184,7 +186,7 @@
                                                     <p class="quantity">1x - <span class="amount">$99.00</span></p>
                                                 </div>
                                             </li>
-                                            <li>
+                                          @*   <li>
                                                 <a href="javascript:void(0)" class="remove" title="Remove this item"><i
                                                         class="lni lni-close"></i></a>
                                                 <div class="cart-img-head">
@@ -195,7 +197,7 @@
                                                     <h4><a href="product-details.html">Wi-Fi Smart Camera</a></h4>
                                                     <p class="quantity">1x - <span class="amount">$35.00</span></p>
                                                 </div>
-                                            </li>
+                                            </li> *@
                                         </ul>
                                         <div class="bottom">
                                             <div class="total">

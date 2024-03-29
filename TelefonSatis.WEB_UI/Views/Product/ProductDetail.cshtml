@@ -101,7 +101,7 @@
                                     {
                                         @Html.HiddenFor(i => i.ProductsId) }*@
                                     <div class="button cart-button">
-                                        <button type="submit" class="btn-btn success" style="width: 100%;">Add to Cart</button>
+                                        <button type="submit" class="btn-btn success" onclick="AddBasket(@Model.ProductsId,@Model.UserId)" style="width: 100%;">Add to Cart</button>
                                     </div>
                                     
                                 </div>
@@ -223,4 +223,7 @@
         </div>
     </div>
 </div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script src="~/ShopGrids/assets/js/SepetIslemleri.js"></script>
 
